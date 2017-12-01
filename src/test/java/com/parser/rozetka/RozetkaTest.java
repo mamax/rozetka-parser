@@ -1,7 +1,7 @@
 package com.parser.rozetka;
 
 import com.parser.rozetka.base.BasicTest;
-import com.parser.rozetka.categories.wine.products.WhiteWine;
+import com.parser.rozetka.categories.Product;
 import com.parser.rozetka.pages.WinePage;
 import org.testng.annotations.Test;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class RozetkaTest extends BasicTest {
 
-    List<WhiteWine> list = new ArrayList<>();
+    List<Product> list = new ArrayList<>();
 
     @Test
     public void testRozetka(){
@@ -20,9 +20,13 @@ public class RozetkaTest extends BasicTest {
         WinePage page = new WinePage(driver);
 
         for (int i = 0; i < page.getBlockList().size(); i++){
-            System.out.print(page.getNameProduct().getText() + " - ");
+            String name = page.getNameProduct().getText();
             String price = page.getPrice().getText();
             System.out.println(price.split(" ")[0].substring(0, price.length()-3));
+            int price1 = Integer.parseInt(price);
+            Product product = new Product();
+            list.add(product);
+
         }
 
 
